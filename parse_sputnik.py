@@ -60,7 +60,7 @@ for train in all_trains:
 print("Расписание поездов типа 'Спутник':")
 print("=" * 50)
 
-for i, train in enumerate(sputnik_trains, 1):
+for i, train in enumerate(sputnik_trains, 1): # Перебирает список, Для каждого элемента возвращает пару: (номер, элемент), 
     print(f"{i}. Время: {train['time']}")
     print(f"   Маршрут: {train['route']}")
     print(f"   Дни: {train['days']}")
