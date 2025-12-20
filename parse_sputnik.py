@@ -13,20 +13,20 @@ soup = BeautifulSoup(html_content, 'html.parser')
 all_trains = []
 
 # Ищем все строки в таблице с расписанием
-rows = soup.find_all('tr')
+rows = soup.find_all('tr') # Поиск всех строк таблицы
 
 for row in rows:
     # Пытаемся найти время отправления
     time_cells = row.find_all('td')
-    if len(time_cells) > 1:
-        time_span = time_cells[1].find('span')
+    if len(time_cells) > 1: # если в строке больше 1 ячейки
+        time_span = time_cells[1].find('span') # та проверка отсекает пустые строки или строки-заголовки
         if time_span:
             time_text = time_span.text.strip()
             
             # Пытаемся найти маршрут
             route_link = row.find('a')
             if route_link:
-                route_text = route_link.text.strip()
+                route_text = route_link.text.strip() # метод строки, удаляет пробелы, табуляции и переносы строк в начале и конце строки
                 
                 # Пытаемся найти тип поезда и дни
                 train_type = "Электричка"  # по умолчанию
